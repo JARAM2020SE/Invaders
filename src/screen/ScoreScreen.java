@@ -30,13 +30,13 @@ public class ScoreScreen extends Screen {
 	private static final int LAST_CHAR = 90;
 
 	/** Current score. */
-	private int score;
+	private Pair score;
 	/** Player lives left. */
-	private int livesRemaining;
+	private Pair livesRemaining;
 	/** Total bullets shot by the player. */
-	private int bulletsShot;
+	private Pair bulletsShot;
 	/** Total ships destroyed by the player. */
-	private int shipsDestroyed;
+	private Pair shipsDestroyed;
 	/** Current Players' numbers.*/
 	private int playerCode;
 	/** List of past high scores. */

@@ -1,0 +1,112 @@
+[33m20624c0[m[33m ([m[1;36mHEAD -> [m[1;32mtmp[m[33m, [m[1;31morigin/feature[m[33m, [m[1;31mlimz/feature[m[33m, [m[1;32mmaster[m[33m, [m[1;32mfeature[m[33m)[m Merge pull request #5 from JARAM2020SE/JARAM-19
+[33m8b63694[m[33m ([m[1;31morigin/JARAM-19[m[33m, [m[1;31mlimz/JARAM-19[m[33m)[m Merge pull request #4 from kyj0701/master
+[33m2636965[m Add player select screen
+[33mdfb8b11[m Merge pull request #3 from hsmint/master
+[33m7109bd7[m Add method for player 2
+[33m3864ad0[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/hotfix[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mlimz/master[m[33m, [m[1;31mlimz/hotfix[m[33m, [m[1;31mlimz/develop[m[33m)[m Merge pull request #2 from JARAM2020SE/Jira
+[33md867658[m JARAM-16 Add GitHub integration with basic IDE files
+[33m040d916[m Fixed readme.
+[33m943d419[m Updated readme.
+[33m8bd0d22[m Adjusted default high scores.
+[33m235d3a4[m Enemies don't start shooting inmediately now.
+[33m47087d2[m Fixed margins.
+[33m5e8b358[m Fixes #1
+[33md211bfc[m Changed bullet speed.
+[33m009d4d1[m Reduced number of levels.
+[33m1a3510c[m Player is informed when getting a bonus life.
+[33m327c9ed[m Fixed level loading to get correct level.
+[33mdfcaf0b[m Added delay time between screen changes.
+[33me2dceb0[m Adjusted player's movement and rate of fire.
+[33m6fbbb95[m Minor fixes.
+[33m823ee09[m Working difficulties for all 15 levels.
+[33m6991ecd[m Adjusted movement speed changes.
+[33m883595e[m Fixes #3
+[33m7840cf9[m Game difficulty is now derived from game settings.
+[33m225bf52[m GameSettings object defines level difficulty.
+[33m228bb23[m Game state is now tracked by an specific object.
+[33m38734f2[m Fixed enemy formation position and movement.
+[33mdfaa297[m Fixes #2.
+[33mdf4df22[m Removed unnecessary annotations.
+[33m37e71e7[m Screens are now shown on a single frame.
+[33mcf9c5b6[m Deleted unnecessary attribute from entities.
+[33m2a5ab0a[m Fixed screen package format.
+[33mb443e73[m Fixed entity package format.
+[33m30a7eba[m Excluded style config files.
+[33mb3eb3ec[m Fixed engine package format.
+[33m8f05838[m Added difficulty levels.
+[33m7e483b0[m Reworked and cleaned drawing manager.
+[33m9730d76[m Added countdown to game screen.
+[33mec131be[m Enemy ships dont move until game starts.
+[33mb66c043[m Font files don't belong in the repo.
+[33ma6cf7b7[m Font files don't belong in the repo.
+[33ma7f43b1[m Added working name input.
+[33mf320691[m Refactored score screen drawing.
+[33mc76e309[m Started implementation of name input.
+[33m5620d2e[m Added new record message to score screen.
+[33m0ab7ffa[m Added input delay to every screen.
+[33m3a1f224[m Saves user high scores to disk.
+[33m1f4ab8a[m Method to save high scores to disk.
+[33m7f9351b[m Added missing comments.
+[33m9950b9f[m Changed log format.
+[33m74d3f23[m Fixed exception handling on high score screen.
+[33ma0a6bb9[m Loads high scores from external file.
+[33m38efa03[m Fixed issue with high score loading.
+[33m18e4511[m More straightforward score loading.
+[33mbb8983d[m Moved score loading to file manager.
+[33ma5bee1e[m Added destruction animation for the main ship.
+[33m4e73013[m Fixed input manager structure.
+[33mbe517f8[m Added file manager class.
+[33m8876ec5[m Reads scores from file.
+[33me665d5d[m Added missing documentation.
+[33m9190b40[m High Scores now show up on the screen.
+[33m95ec43e[m Added title and instructions to scores screen.
+[33m7209782[m Added high scores screen with placeholder content.
+[33m200f14b[m Functional bonus enemies.
+[33m1baaed7[m Minor fixes.
+[33m37f86a1[m Menu now works.
+[33m1c57f5a[m Simpler way of changing screens.
+[33m7e1c073[m Updated readme screenshot.
+[33m2ec973f[m Added title screen.
+[33m194aa83[m Refactoring Screen class and subclasses.
+[33mc565fd0[m Special bonus enemy may now appear.
+[33mb62b58c[m Score screen has a delay before accepting input.
+[33m2894f74[m Moved accuracy calculations.
+[33m73a91d1[m Added stats to score screen.
+[33m6512f17[m Methods to draw centered strings.
+[33m2d4cea3[m Font rendering changes.
+[33m7121f1d[m Added a play again option.
+[33m3672578[m Added a screen showing the score.
+[33ma656e93[m Color changes.
+[33m379fb84[m Incomplete formation now moves correctly.
+[33md480685[m It is now possible to lose the game.
+[33mc079ff0[m Destroyed enemies are now removed after exploding.
+[33m48dc751[m Changed storage system of enemy ships.
+[33m9e69bad[m All engine operations now pass through the core.
+[33mcfd4e2b[m Added leading zeros to score.
+[33m0b325c9[m Added apropiate font.
+[33m7cf8411[m Added logging capacity.
+[33m90a6428[m Score system added.
+[33m3f84c2b[m Minor cleanup.
+[33m5c6ac63[m Enemies now move faster as they are destroyed.
+[33m64970ff[m Fixed issue when destroying ship in position 0,0.
+[33mb77ea7b[m Enemy ships now explode when destroyed.
+[33md9c6379[m Enemy ships can now be destroyed.
+[33md324362[m Collision detection added.
+[33ma277939[m Enemy ships can now shoot.
+[33m86e0d0a[m Fixed issue with linebreaks.
+[33mb1040ad[m New sprites.
+[33me452413[m Reworked creation and storage of ship formations.
+[33m2baa944[m Simplified task of moving enemy ships.
+[33m2d56f5f[m Improved sprite loading.
+[33m8cc014e[m EnemyShips are now animated.
+[33m7a2e4cc[m Added more models of enemy ship.
+[33m8b762a3[m Drawing directions moved to external file.
+[33m0994cf1[m Sprite asignation now works in a saner way.
+[33m0396aab[m Enemy ships can now move.
+[33me7d3db3[m Added Enemy Ships.
+[33m51a0354[m Moved bullet drawing logic to GameScreen.
+[33md6b0be9[m Changes the process of drawing to the screen.
+[33mbb15ee4[m Fixed InputManager behavior.
+[33m4e5b5b0[m InputManager now a singleton.
+[33m3605d8e[m Readme added.
+[33m75f33fa[m Initial commit.
