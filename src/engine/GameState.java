@@ -1,5 +1,7 @@
 package engine;
 
+import entity.Pair;
+
 /**
  * Implements an object that stores the state of the game between levels.
  * 
@@ -11,13 +13,13 @@ public class GameState {
 	/** Current game level. */
 	private int level;
 	/** Current score. */
-	private int score;
+	private Pair score;
 	/** Lives currently remaining. */
-	private int livesRemaining;
+	private Pair livesRemaining;
 	/** Bullets shot until now. */
-	private int bulletsShot;
+	private Pair bulletsShot;
 	/** Ships destroyed until now. */
-	private int shipsDestroyed;
+	private Pair shipsDestroyed;
 	/** The code for the number of players. */
 	private int playerCode;
 
@@ -36,9 +38,9 @@ public class GameState {
 	 * @param shipsDestroyed
 	 *            Ships destroyed until now.
 	 */
-	public GameState(final int level, final int score,
-			final int livesRemaining, final int bulletsShot,
-			final int shipsDestroyed, final int playerCode) {
+	public GameState(final int level, final Pair score,
+			final Pair livesRemaining, final Pair bulletsShot,
+			final Pair shipsDestroyed, final int playerCode) {
 		this.level = level;
 		this.score = score;
 		this.livesRemaining = livesRemaining;
@@ -57,28 +59,28 @@ public class GameState {
 	/**
 	 * @return the score
 	 */
-	public final int getScore() {
+	public final Pair getScore() {
 		return score;
 	}
 
 	/**
 	 * @return the livesRemaining
 	 */
-	public final int getLivesRemaining() {
+	public final Pair getLivesRemaining() {
 		return livesRemaining;
 	}
 
 	/**
 	 * @return the bulletsShot
 	 */
-	public final int getBulletsShot() {
+	public final Pair getBulletsShot() {
 		return bulletsShot;
 	}
 
 	/**
 	 * @return the shipsDestroyed
 	 */
-	public final int getShipsDestroyed() {
+	public final Pair getShipsDestroyed() {
 		return shipsDestroyed;
 	}
 
