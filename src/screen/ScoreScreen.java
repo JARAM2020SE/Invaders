@@ -10,6 +10,8 @@ import engine.Core;
 import engine.GameState;
 import engine.Score;
 
+import entity.Pair;
+
 /**
  * Implements the score screen.
  * 

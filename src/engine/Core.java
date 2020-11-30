@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 
 import screen.*;
 
+import entity.Pair;
+
 /**
  * Implements core game logic.
  * 

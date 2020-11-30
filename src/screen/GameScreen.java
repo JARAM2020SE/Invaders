@@ -14,6 +14,7 @@ import entity.EnemyShip;
 import entity.EnemyShipFormation;
 import entity.Entity;
 import entity.Ship;
+import entity.Pair;
 
 /**
  * Implements the game screen, where the action happens.
