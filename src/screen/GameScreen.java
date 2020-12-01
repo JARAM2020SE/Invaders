@@ -1,5 +1,6 @@
 package screen;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
@@ -76,6 +77,11 @@ public class GameScreen extends Screen {
 	/** Checks if a bonus life is received. */
 	private boolean bonusLife;
 
+	/** Default color for player1's ship.*/
+	private Color SHIP1_COLOR = Color.GREEN;
+	/** Default color for player2's ship.*/
+	private Color SHIP2_COLOR = Color.RED;
+
 
 	/**
 	 * Constructor, establishes the properties of the screen.
@@ -122,10 +128,10 @@ public class GameScreen extends Screen {
 		enemyShipFormation = new EnemyShipFormation(this.gameSettings);
 		enemyShipFormation.attach(this);
 		if(this.playerCode == 1) //player1
-			this.ship1 = new Ship(this.width / 2, this.height - 30);
+			this.ship1 = new Ship(this.width / 2, this.height - 30, SHIP1_COLOR);
 		else{ //player2
-			this.ship1 = new Ship(this.width / 3, this.height - 30);
-			this.ship2 = new Ship(2 * this.width / 3, this.height - 30);
+			this.ship1 = new Ship(this.width / 3, this.height - 30, SHIP1_COLOR);
+			this.ship2 = new Ship(2 * this.width / 3, this.height - 30, SHIP2_COLOR);
 		}
 
 		// Appears each 10-30 seconds.
