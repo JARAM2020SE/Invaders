@@ -121,9 +121,9 @@ public class GameScreen extends Screen {
 
 		enemyShipFormation = new EnemyShipFormation(this.gameSettings);
 		enemyShipFormation.attach(this);
-		if(this.playerCode == 1)
+		if(this.playerCode == 1) //player1
 			this.ship1 = new Ship(this.width / 2, this.height - 30);
-		else{
+		else{ //player2
 			this.ship1 = new Ship(this.width / 3, this.height - 30);
 			this.ship2 = new Ship(2 * this.width / 3, this.height - 30);
 		}
@@ -167,29 +167,72 @@ public class GameScreen extends Screen {
 	protected final void update() {
 		super.update();
 
-		if (this.inputDelay.checkFinished() && !this.levelFinished && playerCode == 1) {
+		if (this.inputDelay.checkFinished() && !this.levelFinished) {
+			if(playerCode == 1){ //When you are playing one player mode.
+				if (!this.ship1.isDestroyed()) {
+					boolean moveRight = inputManager.isKeyDown(KeyEvent.VK_RIGHT)
+							|| inputManager.isKeyDown(KeyEvent.VK_D);
+					boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_LEFT)
+							|| inputManager.isKeyDown(KeyEvent.VK_A);
 
-			if (!this.ship1.isDestroyed()) {
-				boolean moveRight = inputManager.isKeyDown(KeyEvent.VK_RIGHT)
-						|| inputManager.isKeyDown(KeyEvent.VK_D);
-				boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_LEFT)
-						|| inputManager.isKeyDown(KeyEvent.VK_A);
+					boolean isRightBorder = this.ship1.getPositionX()
+							+ this.ship1.getWidth() + this.ship1.getSpeed() > this.width - 1;
+					boolean isLeftBorder = this.ship1.getPositionX()
+							- this.ship1.getSpeed() < 1;
 
-				boolean isRightBorder = this.ship1.getPositionX()
-						+ this.ship1.getWidth() + this.ship1.getSpeed() > this.width - 1;
-				boolean isLeftBorder = this.ship1.getPositionX()
-						- this.ship1.getSpeed() < 1;
-
-				if (moveRight && !isRightBorder) {
-					this.ship1.moveRight();
+					if (moveRight && !isRightBorder) {
+						this.ship1.moveRight();
+					}
+					if (moveLeft && !isLeftBorder) {
+						this.ship1.moveLeft();
+					}
+					if (inputManager.isKeyDown(KeyEvent.VK_SPACE))
+						if (this.ship1.shoot(this.bullets))
+							this.bulletsShot.addPlayer1Value(1);
 				}
-				if (moveLeft && !isLeftBorder) {
-					this.ship1.moveLeft();
+			} else if(playerCode == 2){ //When you are playing two players mode.
+				if (!this.ship1.isDestroyed()) { //player1 status
+					boolean moveRight = inputManager.isKeyDown(KeyEvent.VK_RIGHT);
+					boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_LEFT);
+
+					boolean isRightBorder = this.ship1.getPositionX()
+							+ this.ship1.getWidth() + this.ship1.getSpeed() > this.width - 1;
+					boolean isLeftBorder = this.ship1.getPositionX()
+							- this.ship1.getSpeed() < 1;
+
+					if (moveRight && !isRightBorder) {
+						this.ship1.moveRight();
+					}
+					if (moveLeft && !isLeftBorder) {
+						this.ship1.moveLeft();
+					}
+					if (inputManager.isKeyDown(KeyEvent.VK_SPACE))
+						if (this.ship1.shoot(this.bullets))
+							this.bulletsShot.addPlayer1Value(1);
 				}
-				if (inputManager.isKeyDown(KeyEvent.VK_SPACE))
-					if (this.ship1.shoot(this.bullets))
-						this.bulletsShot++;
+
+				if (!this.ship2.isDestroyed()){ //player2 status
+					boolean moveRight = inputManager.isKeyDown(KeyEvent.VK_D);
+					boolean moveLeft = inputManager.isKeyDown(KeyEvent.VK_A);
+
+					boolean isRightBorder = this.ship2.getPositionX()
+							+ this.ship2.getWidth() + this.ship2.getSpeed() > this.width - 1;
+					boolean isLeftBorder = this.ship2.getPositionX()
+							- this.ship2.getSpeed() < 1;
+
+					if (moveRight && !isRightBorder) {
+						this.ship2.moveRight();
+					}
+					if (moveLeft && !isLeftBorder) {
+						this.ship2.moveLeft();
+					}
+					if (inputManager.isKeyDown(KeyEvent.VK_ENTER))
+						if (this.ship2.shoot(this.bullets))
+							this.bulletsShot.addPlayer2Value(1);
+				}
 			}
+
+
 
 			if (this.enemyShipSpecial != null) {
 				if (!this.enemyShipSpecial.isDestroyed())
@@ -211,7 +254,8 @@ public class GameScreen extends Screen {
 			}
 
 
-			this.ship1.update();
+			this.ship1.update();//player1 update
+			if(playerCode == 2) this.ship2.update();//player2 update
 			this.enemyShipFormation.update();
 			this.enemyShipFormation.shoot(this.bullets);
 		}
@@ -220,10 +264,24 @@ public class GameScreen extends Screen {
 		cleanBullets();
 		draw();
 
-		if ((this.enemyShipFormation.isEmpty() || this.lives == 0)
-				&& !this.levelFinished) {
-			this.levelFinished = true;
-			this.screenFinishedCooldown.reset();
+		switch(playerCode){
+			case 1 : //one-player mode check
+				if ((this.enemyShipFormation.isEmpty() || this.lives.getPlayer1Value() == 0)
+						&& !this.levelFinished) {
+					this.levelFinished = true;
+					this.screenFinishedCooldown.reset();
+				}
+				break;
+
+			case 2 : //two-players mode check
+				if ((this.enemyShipFormation.isEmpty() || this.lives.getPlayer1Value() == 0 || this.lives.getPlayer2Value() == 0)
+						&& !this.levelFinished) {
+					this.levelFinished = true;
+					this.screenFinishedCooldown.reset();
+				}
+				break;
+
+			default : break;
 		}
 
 		if (this.levelFinished && this.screenFinishedCooldown.checkFinished())
