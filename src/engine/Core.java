@@ -115,7 +115,11 @@ public final class Core {
 		int returnCode = 1;
 		int playerCode = 1;
 		do {
-			gameState = new GameState(1, 0, MAX_LIVES, 0, 0, playerCode);
+			gameState = new GameState(1, new Pair(0, 0),
+					new Pair(MAX_LIVES, MAX_LIVES),
+					new Pair(0, 0),
+					new Pair(0, 0),
+					playerCode);
 
 			switch (returnCode) {
 			case 1:
@@ -138,7 +142,7 @@ public final class Core {
 						// One extra live every few levels.
 						boolean bonusLife = gameState.getLevel()
 								% EXTRA_LIFE_FRECUENCY == 0
-								&& gameState.getLivesRemaining() < MAX_LIVES;
+								&& gameState.getLivesRemaining().getPlayer1Value() < MAX_LIVES;
 
 						currentScreen = new GameScreen(gameState,
 								gameSettings.get(gameState.getLevel() - 1),
@@ -157,7 +161,8 @@ public final class Core {
 								gameState.getShipsDestroyed(),
 								playerCode);
 
-					} while (gameState.getLivesRemaining() > 0
+					} while ((playerCode == 1) ? (gameState.getLivesRemaining().getPlayer1Value() > 0)
+							: (gameState.getLivesRemaining().getPlayer1Value() > 0 || gameState.getLivesRemaining().getPlayer2Value() > 0)
 							&& gameState.getLevel() <= NUM_LEVELS);
 
 					LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
