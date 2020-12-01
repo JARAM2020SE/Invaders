@@ -275,7 +275,7 @@ public final class DrawManager {
 		backBufferGraphics.setFont(fontRegular);
 		backBufferGraphics.setColor(Color.WHITE);
 		String scoreString1 = String.format("%04d", score1);
-		backBufferGraphics.drawString(scoreString1, 30, 25);
+		backBufferGraphics.drawString(scoreString1, screen.getWidth()/2 - 70, 25);
 		String scoreString2 = String.format("%04d", score2);
 		backBufferGraphics.drawString(scoreString2, screen.getWidth() - 60, 25);
 	}
@@ -293,10 +293,14 @@ public final class DrawManager {
 	public void drawLivesFor2(final Screen screen, final int lives1, final int lives2) {
 		backBufferGraphics.setFont(fontRegular);
 		backBufferGraphics.setColor(Color.WHITE);
-		backBufferGraphics.drawString(Integer.toString(lives1), 20, 25);
+		backBufferGraphics.drawString(Integer.toString(lives1), 10, 25);
+		backBufferGraphics.drawString(Integer.toString(lives2), screen.getWidth()/2 + 20, 25);
 		Ship dummyShip = new Ship(0, 0);
-		for (int i = 0; i < lives; i++)
-			drawEntity(dummyShip, 40 + 35 * i, 10);
+		for (int i = 0; i < lives1; i++)
+			drawEntity(dummyShip, 30 + 35 * i, 10);
+		for (int i = 0; i < lives2; i++){
+			drawEntity(dummyShip, screen.getWidth()/2 + 40 + 35 * i, 10);
+		}
 	}
 
 	/**
