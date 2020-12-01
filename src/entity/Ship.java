@@ -64,13 +64,15 @@ public class Ship extends Entity {
 	 * 
 	 * @param bullets
 	 *            List of bullets on screen, to add the new bullet.
+	 * @param name
+	 *            Name of shooter of this bullet.
 	 * @return Checks if the bullet was shot correctly.
 	 */
-	public final boolean shoot(final Set<Bullet> bullets) {
+	public final boolean shoot(final Set<Bullet> bullets, final String name) {
 		if (this.shootingCooldown.checkFinished()) {
 			this.shootingCooldown.reset();
 			bullets.add(BulletPool.getBullet(positionX + this.width / 2,
-					positionY, BULLET_SPEED));
+					positionY, BULLET_SPEED, name));
 			return true;
 		}
 		return false;
