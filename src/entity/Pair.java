@@ -16,4 +16,9 @@ public class Pair {
     public void setPlayer1Value(int p1Value){this.p1Value = p1Value;}
 
     public void setPlayer2Value(int p2Value){this.p2Value = p2Value;}
+
+    public void addPlayer1Value(int inc){this.p1Value += inc;}
+
+    public void addPlayer2Value(int inc){this.p2Value += inc;}
+
 }
