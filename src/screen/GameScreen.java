@@ -105,8 +105,8 @@ public class GameScreen extends Screen {
 		this.score = gameState.getScore();
 		this.lives = gameState.getLivesRemaining();
 		if (this.bonusLife) {
-			this.lives.addPlayer1Value(1);
-			if(this.playerCode == 2) this.lives.addPlayer2Value(1);
+			if(this.lives.getPlayer1Value() > 0) this.lives.addPlayer1Value(1);
+			if(this.playerCode == 2 && this.lives.getPlayer2Value() > 0) this.lives.addPlayer2Value(1);
 		}
 		this.bulletsShot = gameState.getBulletsShot();
 		this.shipsDestroyed = gameState.getShipsDestroyed();
@@ -297,6 +297,9 @@ public class GameScreen extends Screen {
 
 		drawManager.drawEntity(this.ship1, this.ship1.getPositionX(),
 				this.ship1.getPositionY());
+		if(playerCode == 2) //two-players mode
+			drawManager.drawEntity(this.ship2, this.ship2.getPositionX(),
+					this.ship2.getPositionY());
 		if (this.enemyShipSpecial != null)
 			drawManager.drawEntity(this.enemyShipSpecial,
 					this.enemyShipSpecial.getPositionX(),
@@ -309,8 +312,13 @@ public class GameScreen extends Screen {
 					bullet.getPositionY());
 
 		// Interface.
-		drawManager.drawScore(this, this.score.getPlayer1Value());
-		drawManager.drawLives(this, this.lives.getPlayer1Value());
+		if(playerCode == 1) { //one-player mode
+			drawManager.drawScore(this, this.score.getPlayer1Value());
+			drawManager.drawLives(this, this.lives.getPlayer1Value());
+		}else if(playerCode == 2){ //two-players mode
+			drawManager.drawScoreFor2(this, this.score.getPlayer1Value(), this.score.getPlayer2Value());
+			drawManager.drawLivesFor2(this, this.lives.getPlayer1Value(), this.lives.getPlayer2Value());
+		}
 		drawManager.drawHorizontalLine(this, SEPARATION_LINE_HEIGHT - 1);
 
 		// Countdown to game start.
@@ -352,12 +360,22 @@ public class GameScreen extends Screen {
 		Set<Bullet> recyclable = new HashSet<Bullet>();
 		for (Bullet bullet : this.bullets)
 			if (bullet.getSpeed() > 0) {
-				if (checkCollision(bullet, this.ship1) && !this.levelFinished) {
+				if (checkCollision(bullet, this.ship1) && !this.levelFinished) { //player1 collide
 					recyclable.add(bullet);
 					if (!this.ship1.isDestroyed()) {
 						this.ship1.destroy();
-						this.lives--;
-						this.logger.info("Hit on player ship, " + this.lives
+						this.lives.addPlayer1Value(-1);
+						this.logger.info("Hit on player ship, " + this.lives.getPlayer1Value()
+								+ " lives remaining.");
+					}
+				}
+
+				if (playerCode == 2 && checkCollision(bullet, this.ship2) && !this.levelFinished){ //player2 collide
+					recyclable.add(bullet);
+					if (!this.ship2.isDestroyed()) {
+						this.ship2.destroy();
+						this.lives.addPlayer2Value(-1);
+						this.logger.info("Hit on player ship, " + this.lives.getPlayer2Value()
 								+ " lives remaining.");
 					}
 				}

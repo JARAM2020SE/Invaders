@@ -161,8 +161,7 @@ public final class Core {
 								gameState.getShipsDestroyed(),
 								playerCode);
 
-					} while ((playerCode == 1) ? (gameState.getLivesRemaining().getPlayer1Value() > 0)
-							: (gameState.getLivesRemaining().getPlayer1Value() > 0 || gameState.getLivesRemaining().getPlayer2Value() > 0)
+					} while (gameState.getLivesRemaining() > 0
 							&& gameState.getLevel() <= NUM_LEVELS);
 
 					LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
