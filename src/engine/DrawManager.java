@@ -261,6 +261,45 @@ public final class DrawManager {
 	}
 
 	/**
+	 * Draws current score on screen for two players.
+	 *
+	 * @param screen
+	 *            Screen to draw on.
+	 * @param score1
+	 *            Current Player1's score.
+	 * @param score2
+	 * 			  Current Player2's score.
+	 *
+	 */
+	public void drawScoreFor2(final Screen screen, final int score1, final int score2) {
+		backBufferGraphics.setFont(fontRegular);
+		backBufferGraphics.setColor(Color.WHITE);
+		String scoreString1 = String.format("%04d", score1);
+		backBufferGraphics.drawString(scoreString1, 30, 25);
+		String scoreString2 = String.format("%04d", score2);
+		backBufferGraphics.drawString(scoreString2, screen.getWidth() - 60, 25);
+	}
+
+	/**
+	 * Draws number of remaining lives on screen for two players.
+	 *
+	 * @param screen
+	 *            Screen to draw on.
+	 * @param lives1
+	 *            Current lives.
+	 * @param lives2
+	 *            Current lives.
+	 */
+	public void drawLivesFor2(final Screen screen, final int lives1, final int lives2) {
+		backBufferGraphics.setFont(fontRegular);
+		backBufferGraphics.setColor(Color.WHITE);
+		backBufferGraphics.drawString(Integer.toString(lives1), 20, 25);
+		Ship dummyShip = new Ship(0, 0);
+		for (int i = 0; i < lives; i++)
+			drawEntity(dummyShip, 40 + 35 * i, 10);
+	}
+
+	/**
 	 * Draws a thick line from side to side of the screen.
 	 * 
 	 * @param screen
