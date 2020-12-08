@@ -69,7 +69,9 @@ public class GameScreen extends Screen {
 	/** Total ships destroyed by the player. */
 	private Pair shipsDestroyed;
 	/** Current Players' numbers.*/
-	private int playerCode;
+	private final int playerCode;
+	/** Current difficulty of the game.*/
+	private final int difficultyCode;
 	/** Moment the game starts. */
 	private long gameStartTime;
 	/** Checks if the level is finished. */
@@ -78,9 +80,9 @@ public class GameScreen extends Screen {
 	private boolean bonusLife;
 
 	/** Default color for player1's ship.*/
-	private Color SHIP1_COLOR = Color.GREEN;
+	private final Color SHIP1_COLOR = Color.GREEN;
 	/** Default color for player2's ship.*/
-	private Color SHIP2_COLOR = Color.RED;
+	private final Color SHIP2_COLOR = Color.RED;
 
 
 	/**
@@ -114,6 +116,7 @@ public class GameScreen extends Screen {
 			if(this.lives.getPlayer1Value() > 0) this.lives.addPlayer1Value(1);
 			if(this.playerCode == 2 && this.lives.getPlayer2Value() > 0) this.lives.addPlayer2Value(1);
 		}
+		this.difficultyCode = gameState.getDifficultyCode();
 		this.bulletsShot = gameState.getBulletsShot();
 		this.shipsDestroyed = gameState.getShipsDestroyed();
 
@@ -487,6 +490,6 @@ public class GameScreen extends Screen {
 	 */
 	public final GameState getGameState() {
 		return new GameState(this.level, this.score, this.lives,
-				this.bulletsShot, this.shipsDestroyed, this.playerCode);
+				this.bulletsShot, this.shipsDestroyed, this.playerCode, this.difficultyCode);
 	}
 }

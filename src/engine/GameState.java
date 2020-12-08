@@ -22,6 +22,8 @@ public class GameState {
 	private Pair shipsDestroyed;
 	/** The code for the number of players. */
 	private int playerCode;
+	/** The code for the difficulty of the game. */
+	private int difficultyCode;
 
 
 	/**
@@ -37,16 +39,21 @@ public class GameState {
 	 *            Bullets shot until now.
 	 * @param shipsDestroyed
 	 *            Ships destroyed until now.
+	 * @param playerCode
+	 *            Ships destroyed until now.
+	 * @param difficultyCode
+	 *            Ships destroyed until now.
 	 */
 	public GameState(final int level, final Pair score,
 			final Pair livesRemaining, final Pair bulletsShot,
-			final Pair shipsDestroyed, final int playerCode) {
+			final Pair shipsDestroyed, final int playerCode, final int difficultyCode) {
 		this.level = level;
 		this.score = score;
 		this.livesRemaining = livesRemaining;
 		this.bulletsShot = bulletsShot;
 		this.shipsDestroyed = shipsDestroyed;
 		this.playerCode = playerCode;
+		this.difficultyCode = difficultyCode;
 	}
 
 	/**
@@ -89,6 +96,13 @@ public class GameState {
 	 */
 	public final int getPlayerCode() {
 		return playerCode;
+	}
+
+	/**
+	 * @return the difficultyCode
+	 */
+	public final int getDifficultyCode() {
+		return difficultyCode;
 	}
 
 }

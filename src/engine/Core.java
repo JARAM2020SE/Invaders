@@ -143,7 +143,8 @@ public final class Core {
 							new Pair(MAX_LIVES, MAX_LIVES),
 							new Pair(0, 0),
 							new Pair(0, 0),
-							playerCode);
+							playerCode,
+							difficultyCode);
 
 					if (playerCode == 1) {
 						if (difficultyCode == 1) {
@@ -168,7 +169,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-                    					playerCode);
+                    					playerCode,
+										difficultyCode);
 
 							} while (gameState.getLivesRemaining().getPlayer1Value() > 0
 									&& gameState.getLevel() <= NUM_LEVELS);
@@ -205,7 +207,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-										playerCode);
+										playerCode,
+										difficultyCode);
 
 							} while (gameState.getLivesRemaining().getPlayer1Value() > 0
 									&& gameState.getLevel() <= NUM_LEVELS);
@@ -242,7 +245,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-										playerCode);
+										playerCode,
+										difficultyCode);
 
 							} while (gameState.getLivesRemaining().getPlayer1Value() > 0
 									&& gameState.getLevel() <= NUM_LEVELS);
@@ -282,7 +286,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-										playerCode);
+										playerCode,
+										difficultyCode);
 
 							} while ((gameState.getLivesRemaining().getPlayer1Value() > 0
 									|| gameState.getLivesRemaining().getPlayer2Value() > 0)
@@ -320,7 +325,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-										playerCode);
+										playerCode,
+										difficultyCode);
 
 							} while (
 									(gameState.getLivesRemaining().getPlayer1Value() > 0
@@ -360,7 +366,8 @@ public final class Core {
 										gameState.getLivesRemaining(),
 										gameState.getBulletsShot(),
 										gameState.getShipsDestroyed(),
-										playerCode);
+										playerCode,
+										difficultyCode);
 
 							} while (
 									(gameState.getLivesRemaining().getPlayer1Value() > 0
