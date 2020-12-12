@@ -77,6 +77,8 @@ public class GameScreen extends Screen {
 	/** Checks if a bonus life is received. */
 	private boolean bonusLife;
 
+	private boolean isPaused;
+
 	/** Default color for player1's ship.*/
 	private Color SHIP1_COLOR = Color.GREEN;
 	/** Default color for player2's ship.*/
@@ -154,8 +156,10 @@ public class GameScreen extends Screen {
 	 *
 	 * @return Next screen code.
 	 */
-	public final int run() throws InterruptedException {
+	public final int run() {
 		super.run();
+		isPaused = false;
+
 		if (this.playerCode == 1) { // In player 1 mode, score changes per lives after each stage
 			if (lives.getPlayer1Value() > 0) {//when you're alive
 				this.score.addPlayer1Value(LIFE_SCORE * (this.lives.getPlayer1Value() - 1));
@@ -195,6 +199,18 @@ public class GameScreen extends Screen {
 		super.update();
 
 		if (this.inputDelay.checkFinished() && !this.levelFinished) {
+			if (inputManager.isKeyDown(KeyEvent.VK_ESCAPE))
+				isPaused = true;
+
+			while (isPaused) {
+				drawPaused();
+				try {
+					if (this.inputManager.isKeyDown(KeyEvent.VK_F1))
+						isPaused = false;
+					Thread.sleep(100);
+				} catch (InterruptedException e) { }
+			}
+
 			if(playerCode == 1){ //When you are playing one player mode.
 				if (!this.ship1.isDestroyed()) {
 					boolean moveRight = inputManager.isKeyDown(KeyEvent.VK_RIGHT)
@@ -359,6 +375,20 @@ public class GameScreen extends Screen {
 					/ 12);
 		}
 
+		drawManager.completeDrawing(this);
+	}
+
+	/**
+	 * Draw paused message
+	 */
+	private void drawPaused() {
+		String string = "Press F1 to resume";
+		drawManager.initDrawing(this);
+		drawManager.drawPausedMessage(this, string);
+		drawManager.drawHorizontalLine(this, this.height / 2 - this.height
+				/ 12);
+		drawManager.drawHorizontalLine(this, this.height / 2 + this.height
+				/ 12);
 		drawManager.completeDrawing(this);
 	}
 

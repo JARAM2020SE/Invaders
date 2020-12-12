@@ -50,7 +50,6 @@ public class Screen {
 
 	protected int resetCode;
 
-	protected boolean isPaused;
 
 	/**
 	 * Constructor, establishes the properties of the screen.
@@ -90,28 +89,13 @@ public class Screen {
 	 * 
 	 * @return Next screen code.
 	 */
-	public int run() throws InterruptedException {
+	public int run() {
 		this.isRunning = true;
-		this.isPaused = false;
 
 		while (this.isRunning) {
 			long time = System.currentTimeMillis();
-			this.isPaused = inputManager.isKeyDown(KeyEvent.VK_ESCAPE);
-			this.logger.info("KEYBOARD STATUS : " + this.isPaused);
-			if (this.isPaused) {
-				while (this.isPaused) {
-					if(inputManager.isKeyDown(KeyEvent.VK_S))
-						this.isPaused = false;
-					Thread.sleep(100);
-					this.logger.info("KEYBOARD STATUS INSIDE: " + this.isPaused);
-				}
-				this.isPaused = false;
-				continue;
-			}
-			else {
-				update();
-			}
 
+			update();
 			time = (1000 / this.fps) - (System.currentTimeMillis() - time);
 			if (time > 0) {
 				try {
